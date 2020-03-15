@@ -51,7 +51,7 @@ int main()
       if(total<obj[a].sum)
       {
          total=obj[a].sum;
+         cout<<obj[a].name<<" has scored more marks "<<total;
       }
     }
-    cout<<obj[a].name<<" has scored more marks "<<total;
 }
