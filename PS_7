@@ -4,23 +4,20 @@ class book
 {
     public:
     char name[50];
-    int sold,bu;
+    int sold,bought;
     void get()
     {
-        cout<<"Enter the name of the book\n";
+        cout<<"Enter name of the book\n";
         cin>>name;
-        cout<<"Enter number of times that was sold\n";
-        cin>>sold;  //the sold value should not be greater than 11(even zero can be enter in bu)
-    }               //which means totally 11 books are there in each name
-    void buy()
-    {
-        cout<<"Enter how many books do u want to buy\n";
-        cin>>bu;    //the bu value must be less than or equal to 11(even zero can be enter in sold)
+        cout<<"Enter number of books was sold\n";
+        cin>>sold;
+        cout<<"Enter number of book was bought\n";
+        cin>>bought;
     }
 };
 int main()
 {
-    int n,i,count=0,sum=0;
+    int n,i,count=0;
     book obj[100];
     cout<<"Enter the number of books\n";
     cin>>n;
@@ -31,23 +28,24 @@ int main()
         {
             count++;
         }
-    }
-    cout<<"Books sold more than 5 times = "<<count<<"\n";
-    for(i=0;i<n;i++)
-    {
-        obj[i].buy();
         try
         {
-            sum=obj[i].sold+obj[i].bu;
-            if(sum>11)
+            int sell(obj[i].sold);
             {
-                throw 1;
-            }
+                if(obj[i].sold>11)
+                    throw 1;
+                if(obj[i].sold<11)
+                    throw 'a';
+            }  
         }
         catch(int x)
         {
-            cout<<"More than 11 books are not allowed\n";
+            cout<<"The book "<<obj[i].name<<" was sold more than 11 times\n";
         }
-    }  
-    
+        catch(char c)
+        {
+            cout<<"The book "<<obj[i].name<<" was not sold more than 11 times\n";
+        }
+    }
+    cout<<"Books sold more than 5 times = "<<count<<"\n";
 }
