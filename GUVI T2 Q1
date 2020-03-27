@@ -1,57 +1,53 @@
-#include <iostream> 
+#include <iostream>
 #include<stdio.h>
-using namespace std; 
+using namespace std;
 class student
 {
    public:
-   char name[100];
+   char name[20];
    int regno;
-   float chem,phy,maths;
+   float chem,phy,math;
    int sum;
-   void get()
-   {
-     cout<<"Enter name:"<<"\n";
+   void get();
+   void check();
+ }s[100];
+void student :: get()
+{
+     
      cin>>name;
-     cout<<"Enter registration number:"<<"\n";
      cin>>regno;
-     cout<<"Enter chemistry mark:"<<"\n";
      cin>>chem;
-     cout<<"Enter maths mark:"<<"\n";
-     cin>>maths;
-     cout<<"Enter physics mark:"<<"\n";
+     cin>>math;
      cin>>phy;
-   }
-   void check()
-   {
-      if((chem>0&&phy>0&&maths>0)&&(chem<=100&&phy<=100&&maths<=100))
+}
+void student :: check()
+{
+      if((chem>0&&phy>0&&math>0)&&(chem<=100&&phy<=100&&math<=100))
       {
-           sum=chem+maths+phy;
+           sum=chem+math+phy;
       }
-    }
- };
- 
+}
 int main()
 {
-    int n,i,a,total=0;
-    student obj[100];
+    int n,i,a,tot=0;
     cout<<"Enter number of Students\n";
     cin>>n;
     for(i=0;i<n;i++)
     {
-        obj[a].get();
-        obj[a].check();
+        s[a].get();
+        s[a].check();
     }
     for(i=0;i<n;i++)
     {
-      if(obj[a].chem<0||obj[a].chem>100||obj[a].phy<0||obj[a].phy>100||obj[a].maths<0||obj[a].maths>100)
+      if(s[a].chem<0||s[a].chem>100||s[a].phy<0||s[a].phy>100||s[a].math<0||s[a].math>100)
       {
-         cout<<"Marks of "<<obj[a].name<<" is not in range\n";
+         cout<<"Marks of "<<s[a].name<<" is not in range\n";
       }
-      total=obj[0].sum;
-      if(total<obj[a].sum)
+      tot=s[0].sum;
+      if(tot<s[a].sum)
       {
-         total=obj[a].sum;
-         cout<<obj[a].name<<" has scored more marks "<<total;
+         tot=s[a].sum;
       }
     }
+    cout<<s[a].name<<" has scored more marks "<<tot;
 }
