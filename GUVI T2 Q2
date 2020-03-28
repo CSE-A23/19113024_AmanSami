@@ -1,6 +1,5 @@
 #include<stdio.h>
 #include<iostream>
-#include<conio.h>
 using namespace std;
 class MYTIME
 {
@@ -63,6 +62,4 @@ main()
     ++b;
     tune(b);
     cout<<"\nIncrement of Time Object 2 = "<<b.hrs<<" "<<b.min<<" "<<b.sec;
-    getch();
-    return 0;
 }
