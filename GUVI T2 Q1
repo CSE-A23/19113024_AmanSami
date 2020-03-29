@@ -1,53 +1,60 @@
-#include <iostream>
+#include<iostream>
+#include<conio.h>
 #include<stdio.h>
 using namespace std;
+
 class student
 {
-   public:
-   char name[20];
-   int regno;
-   float chem,phy,math;
-   int sum;
-   void get();
-   void check();
- }s[100];
-void student :: get()
+    public:
+    char Name[100];
+    int RegNo;
+    int Chemistry;
+    int Maths;
+    int Physics;
+};
+void studin(student &a)
 {
-     
-     cin>>name;
-     cin>>regno;
-     cin>>chem;
-     cin>>math;
-     cin>>phy;
+    cin>>a.Name>>a.RegNo>>a.Chemistry>>a.Maths>>a.Physics;
 }
-void student :: check()
+bool check(student &a)
 {
-      if((chem>0&&phy>0&&math>0)&&(chem<=100&&phy<=100&&math<=100))
-      {
-           sum=chem+math+phy;
-      }
+    if((a.Chemistry>=0&&a.Chemistry<=100)&&(a.Maths>=0&&a.Maths<=100)&&(a.Physics>=0&&a.Physics<=100))
+    return true;
+    else
+    return false;
 }
-int main()
+int tota(student &a)
 {
-    int n,i,a,tot=0;
-    cout<<"Enter number of Students\n";
-    cin>>n;
-    for(i=0;i<n;i++)
-    {
-        s[a].get();
-        s[a].check();
-    }
-    for(i=0;i<n;i++)
-    {
-      if(s[a].chem<0||s[a].chem>100||s[a].phy<0||s[a].phy>100||s[a].math<0||s[a].math>100)
-      {
-         cout<<"Marks of "<<s[a].name<<" is not in range\n";
-      }
-      tot=s[0].sum;
-      if(tot<s[a].sum)
-      {
-         tot=s[a].sum;
-      }
-    }
-    cout<<s[a].name<<" has scored more marks "<<tot;
+    int sum=a.Maths+a.Physics+a.Chemistry;
+    return sum;
+}
+void show(student &a)
+{
+    cout<<"\n"<<a.Name<<"\n"<<a.RegNo<<"\n"<<a.Maths<<"\n"<<a.Physics<<"\n"<<a.Chemistry<<"\n";
+}
+main()
+ {
+     int n;
+     cin>>n;
+     student arr[n];
+     int tot=0,max=0,pos=0;
+     for(int i=0;i<n;i++)
+     {
+         studin(arr[i]);
+         if(check(arr[i]))
+          {
+            tot=tota(arr[i]);
+            if(tot>max)
+           { 
+               max=tot;
+               pos=i;
+           }       
+          }
+         else
+         {
+            cout<<"marks of "<<arr[i].Name<<" "<<i<<" is not in range\n";
+         }
+     }
+     cout<<arr[pos].Name<<" has scored highest total "<<max;
+     return 0;
 }
