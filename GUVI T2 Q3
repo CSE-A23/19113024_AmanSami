@@ -15,11 +15,15 @@ int main()
          {
              posra[sizra]=i;
              sizra++; 
-         }   
+         }
          if(arr[i].length()==2)
          {
              pos2[siz2]=i;
              siz2++; 
+         }
+         if(arr[i].substr(0,2)!="ra"&&arr[i].length()!=2) 
+         {
+             cout<<"None";
          }
      }
     for(int i=0;i<siz2;i++)
