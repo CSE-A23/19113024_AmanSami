@@ -42,24 +42,3 @@ void tune(MYTIME &a)
         a.min=a.min%60;
     }
 }
-MYTIME operator +(MYTIME a,MYTIME b)
-{
-    MYTIME c;
-    c.sec=a.sec + b.sec;
-    tune(c);
-    c.min+=(a.min + b.min);
-    tune(c);
-    c.hrs+=(a.hrs + b.hrs);
-    return c;
-}
-main()
- {
-    MYTIME a,b,c;
-    a.mtin();
-    b.mtin();
-    c=a+b;
-    c.mtout();
-    ++b;
-    tune(b);
-    cout<<"\nIncrement of Time Object 2 = "<<b.hrs<<" "<<b.min<<" "<<b.sec;
-}
